@@ -3,7 +3,7 @@ var path = "./src/banco.json"
 
 var readlineSync = require('readline-sync');
 
-var tipo = readlineSync.question("entrar ou registrar?: ")
+var tipo = readlineSync.question("entrar registrar ou ver dados?: ")
 
 if (tipo === "registrar") {
 
@@ -65,8 +65,6 @@ if (tipo === "registrar") {
       }
 
       console.log("Entrou com sucesso!")
-      console.log(pegaDadosBanco)
-
 
     } else {
       console.log("Não a dados no banco!")
@@ -77,4 +75,10 @@ if (tipo === "registrar") {
       fs.writeFileSync(path, "{}")
     }
   }
+} else if(tipo === "ver dados") {
+  console.clear()
+  const verDados = JSON.parse(fs.readFileSync(path))
+  console.log("Seus dados são: \n")
+  console.log(verDados)
+  console.log("\n")
 }
